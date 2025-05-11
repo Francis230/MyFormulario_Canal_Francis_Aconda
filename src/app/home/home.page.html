@@ -1,20 +1,69 @@
-<ion-header [translucent]="true">
+
+<!-- Diseño de el formulario creado para el ingreso de los datos -->
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Crear Canal YouTube</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="formulario" (ngSubmit)="guardar()">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-item>
+      <ion-label position="floating">Nombre del canal</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea formControlName="descripcion"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Categoría</ion-label>
+      <ion-select formControlName="categoria">
+        <ion-select-option value="Educación">Educación</ion-select-option>
+        <ion-select-option value="Tecnología">Tecnología</ion-select-option>
+        <ion-select-option value="Entretenimiento">Entretenimiento</ion-select-option>
+        <ion-select-option value="Gaming">Gaming</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fecha de creación</ion-label>
+      <ion-datetime formControlName="fechaCreacion"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">País</ion-label>
+      <ion-input formControlName="pais"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input formControlName="correo" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>¿Monetizado?</ion-label>
+      <ion-toggle formControlName="monetizado"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Redes Sociales</ion-label>
+      <ion-select formControlName="redes" multiple="true">
+        <ion-select-option value="Instagram">Instagram</ion-select-option>
+        <ion-select-option value="Facebook">Facebook</ion-select-option>
+        <ion-select-option value="TikTok">TikTok</ion-select-option>
+        <ion-select-option value="Twitter">Twitter</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!formulario.valid">
+      Guardar
+    </ion-button>
+  </form>
 </ion-content>
+
+
+
